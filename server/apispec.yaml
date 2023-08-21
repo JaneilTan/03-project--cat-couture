@@ -3,6 +3,13 @@ info:
   version: "1.0"
   title: Welcome to the Products API!
   description: This API allows user to handle products
+  contact:
+    name: Your Name
+    email: your.email@example.com
+    url: https://your-contact-url.com
+  license:
+    name: Your License Name
+    url: https://your-license-url.com
 servers:
   - url: "http://localhost:5001/api"
     description: Development server
@@ -18,12 +25,19 @@ paths:
         - schema:
             type: integer
             minimum: 1
+            maximum: 10
           in: query
           name: limit
           description: The number of products to return
           required: false
+        - schema:
+            type: integer
+            minimum: 1
+          in: query
+          name: page
+          description: The page number for pagination
       responses:
-        200:
+        '200':
           description: OK
           content:
             application/json:
@@ -48,13 +62,13 @@ paths:
                   - totalPages
                   - itemsPerPage
                   - totalItems
-        400:
+        '400':
           description: Bad Request
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-        500:
+        '500':
           description: Internal Server Error
           content:
             application/json:
@@ -70,12 +84,30 @@ paths:
       tags:
         - reports
       responses:
-        200:
+        '200':
           description: OK
           content:
             application/json:
               schema:
                 type: object
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 components:
   securitySchemes:
     bearerAuth:
@@ -125,3 +157,6 @@ components:
           type: string
 tags:
   - name: products
+    description: Products
+  - name: reports
+    description: Reports
