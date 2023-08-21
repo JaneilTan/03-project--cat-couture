@@ -1,4 +1,3 @@
-
 const Table = ({ children, className }) => {
   return (
     <div className={`${className || ""} container`}>
