@@ -6,17 +6,16 @@ import {
 import userEvent from "@testing-library/user-event";
 import ProductPage from "./ProductPage";
 
-beforeEach(async () => {
-  render(<ProductPage />);
-  await waitForElementToBeRemoved(() => screen.getByTitle(/loading/i));
-});
 
 describe("ProductPage", () => {
-  test("WHEN a user goes to the Products page, THEN the pagination control will be displayed", () => {
+  test("WHEN a user goes to the Products page, THEN the pagination control will be displayed", async () => {
+    render(<ProductPage />);
+    await waitForElementToBeRemoved(() => screen.queryByTitle(/loading/i));
     const previousPageButton = screen.getByRole("button", {
       name: "Previous page",
     });
     const nextPageButton = screen.getByRole("button", { name: "Next page" });
+    
     expect(previousPageButton).toBeInTheDocument();
     expect(nextPageButton).toBeInTheDocument();
   });
