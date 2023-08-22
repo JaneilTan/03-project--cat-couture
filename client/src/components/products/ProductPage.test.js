@@ -6,7 +6,6 @@ import {
 import userEvent from "@testing-library/user-event";
 import ProductPage from "./ProductPage";
 
-
 describe("ProductPage", () => {
   test("WHEN a user goes to the Products page, THEN the pagination control will be displayed", async () => {
     render(<ProductPage />);
@@ -15,7 +14,7 @@ describe("ProductPage", () => {
       name: "Previous page",
     });
     const nextPageButton = screen.getByRole("button", { name: "Next page" });
-    
+
     expect(previousPageButton).toBeInTheDocument();
     expect(nextPageButton).toBeInTheDocument();
   });
