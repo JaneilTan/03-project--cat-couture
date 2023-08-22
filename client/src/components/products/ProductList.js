@@ -3,8 +3,9 @@ import Product from "./Product";
 const ProductList = ({ products, className }) => {
   return (
     <ul className={className}>
-      {products.map((product) => (
+      {products.map((product, index) => (
         <Product
+          key={index}
           name={product.name}
           description={product.description}
           price={product.price}
