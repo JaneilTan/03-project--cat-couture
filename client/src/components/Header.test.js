@@ -3,9 +3,6 @@ import { createMemoryHistory } from "history";
 import { Router } from "react-router-dom";
 import Header from "./Header";
 
-beforeEach(() => {
- 
-});
 
 describe("Header", () => {
   test("The header renders", () => {
