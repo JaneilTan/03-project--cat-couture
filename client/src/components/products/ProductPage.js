@@ -3,11 +3,14 @@ import api from "../../api";
 import ProductList from "./ProductList";
 import Loader from "../Loader";
 import ErrorMessage from "../ErrorMessage";
+import PaginationControls from "./PaginationControls";
 
 const ProductPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [products, setProducts] = useState([]);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
     // We use AbortController (https://developer.mozilla.org/en-US/docs/Web/API/AbortController)
@@ -26,6 +29,7 @@ const ProductPage = () => {
         const data = await result.json();
         if (!abortController.signal.aborted) {
           setProducts(data.products);
+          setTotalPages(data.totalPages);
         }
       } catch (error) {
         if (!abortController.signal.aborted) {
@@ -41,13 +45,18 @@ const ProductPage = () => {
     fetchData();
 
     return () => abortController.abort();
-  }, []);
+  }, [page]);
 
   return (
     <main className="main-layout section-padding">
       {loading && <Loader />}
       {error && <ErrorMessage message="Error fetching products" />}
       <ProductList products={products} className="main-content" />
+      <PaginationControls 
+        page={page}
+        setPage={setPage}
+        totalPages={totalPages}
+      />
     </main>
   );
 };

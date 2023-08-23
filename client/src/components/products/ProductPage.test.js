@@ -20,9 +20,11 @@ describe("ProductPage", () => {
   });
 
   test("WHEN a user navigates to the first page of the Products page, THEN the previous/back button of the pagination control will be disabled", () => {
+    render(<ProductPage />);
     const previousPageButton = screen.getByRole("button", {
       name: "Previous page",
     });
+    userEvent.click(previousPageButton);
     expect(previousPageButton).toBeDisabled();
   });
 
