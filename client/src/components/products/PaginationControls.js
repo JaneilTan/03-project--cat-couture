@@ -6,8 +6,8 @@ import {
 
 const PaginationControls = ({
   page,
-  currentPage = null,
-  totalPages = null,
+  setPage, 
+  totalPages
 }) => {
   // Reference: Pagination tutorial week 5
   const prevDisabled = page > 1 ? false : true;
@@ -15,28 +15,34 @@ const PaginationControls = ({
 
     const onPrev = () => {
         if (!prevDisabled) {
-        currentPage(page - 1);
+        setPage(page - 1);
         }
     };
 
     const onNext = () => {
         if (!nextDisabled) {
-        currentPage(page + 1);
+        setPage(page + 1);
         }
     };
   return (
     <div className="container">
       <div className="controls">
         <div>
-          <button aria-label="Previous page" onClick={onPrev} disabled={prevDisabled}>
+          <button 
+            aria-label="Previous page" 
+            onClick={onPrev} 
+            disabled={prevDisabled}>
             <FontAwesomeIcon icon={faChevronLeft} size="2x" />
           </button>
         </div>
         <span>
-          Page {currentPage} of {totalPages}
+          Page {page} of {totalPages}
         </span>
         <div>
-          <button aria-label="Next page" onClick={onNext} disabled={nextDisabled}>
+          <button 
+            aria-label="Next page" 
+            onClick={onNext} 
+            disabled={nextDisabled}>
             <FontAwesomeIcon icon={faChevronRight} size="2x" />
           </button>
         </div>
