@@ -3,6 +3,7 @@ import api from "../../api";
 import ProductList from "./ProductList";
 import Loader from "../Loader";
 import ErrorMessage from "../ErrorMessage";
+import PaginationControls from "./PaginationControls";
 
 const ProductPage = () => {
   const [loading, setLoading] = useState(false);
@@ -48,6 +49,7 @@ const ProductPage = () => {
       {loading && <Loader />}
       {error && <ErrorMessage message="Error fetching products" />}
       <ProductList products={products} className="main-content" />
+      <PaginationControls />
     </main>
   );
 };
