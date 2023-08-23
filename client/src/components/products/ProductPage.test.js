@@ -36,7 +36,9 @@ describe("ProductPage", () => {
     "WHEN the user navigates to the last page of the Products page, THEN next button of the pagination control will be disabled"
   );
 
-  test("WHEN a user goes to the Products page, THEN the current page will be highlighted in the pagination control", () => {
+  test("WHEN a user goes to the Products page, THEN the current page will be highlighted in the pagination control", async () => {
+    render(<ProductPage />);
+    await waitForElementToBeRemoved(() => screen.queryByTitle(/loading/i));
     const pageDisplay = screen.queryByText(/page/i);
     expect(pageDisplay.textContent).toBe("Page 1 of 2");
     const nextPageButton = screen.getByRole("button", { name: "Next page" });
