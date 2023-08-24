@@ -53,6 +53,8 @@ const ProductPage = () => {
       {error && <ErrorMessage message="Error fetching products" />}
       <ProductList products={products} className="main-content" />
       <PaginationControls 
+        onNext
+        onPrev
         page={page}
         setPage={setPage}
         totalPages={totalPages}
