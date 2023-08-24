@@ -10,7 +10,7 @@ const ProductPage = () => {
   const [error, setError] = useState(false);
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState();
+  const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
     // We use AbortController (https://developer.mozilla.org/en-US/docs/Web/API/AbortController)
@@ -45,7 +45,7 @@ const ProductPage = () => {
     fetchData();
 
     return () => abortController.abort();
-  }, [page]);
+  }, []);
 
   return (
     <main className="main-layout section-padding">
