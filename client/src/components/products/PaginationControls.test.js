@@ -25,14 +25,14 @@ describe("PaginationControls", () => {
     const onPrev = jest.fn();
     render(
       <PaginationControls
-      setPage={() => {}} page={2} totalPages={2}
+      setPage={() => {}} 
+      page={2} 
+      totalPages={2}
       />
     );
     const previousButton = screen.getByRole("button", {
       name: "Previous page",
     });
-    
-
     expect(previousButton).toBeEnabled();
     userEvent.click(previousButton);
     expect(onPrev).toHaveBeenCalledTimes(1);
@@ -41,6 +41,5 @@ describe("PaginationControls", () => {
   
 
   test.todo(
-    "WHEN the user is on the last page of the main product page, THEN next button of the pagination control will be disabled."
-  );
+    "WHEN the user is on the last page of the main product page, THEN next button of the pagination control will be disabled.");
 });
