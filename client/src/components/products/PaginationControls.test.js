@@ -41,6 +41,20 @@ describe("PaginationControls", () => {
   });
   
 
-  test.todo(
-    "WHEN the user is on the last page of the main product page, THEN next button of the pagination control will be disabled.");
+  test("WHEN the user is on the last page of the main product page, THEN next button of the pagination control will be disabled.", () => {
+    const onNext = jest.fn();
+    render(
+      <PaginationControls
+      onNext={() => {}}
+        onPrev={onNext}
+        currentPage={10}
+        totalPages={10}
+      />
+    );
+    const nextPageButton = screen.getByRole("button", { name: "Next page" });
+
+    expect(nextPageButton).toBeDisabled();
+    userEvent.click(nextPageButton);
+    expect(onNext).not.toHaveBeenCalled();
+  });
 });
