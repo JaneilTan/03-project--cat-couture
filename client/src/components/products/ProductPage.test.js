@@ -27,7 +27,7 @@ describe("ProductPage", () => {
     userEvent.click(previousPageButton);
     expect(previousPageButton).toBeDisabled();
   });
-  // Referred to the existing examples 
+  // Referred to the existing examples
   test("WHEN the user navigates to the second page of the Products page, THEN the previous/back button of the pagination control will be enabled", async () => {
     render(<ProductPage />);
     await waitForElementToBeRemoved(() => screen.queryByText(/loading/i));
@@ -38,7 +38,7 @@ describe("ProductPage", () => {
     const previousPageButton = screen.getByRole("button", {
       name: "Previous page",
     });
-    expect(previousPageButton).toBeEnabled();  
+    expect(previousPageButton).toBeEnabled();
   });
 
   test("WHEN the user navigates to the last page of the Products page, THEN next button of the pagination control will be disabled", () => {

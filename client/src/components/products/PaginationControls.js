@@ -4,25 +4,20 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 
-const PaginationControls = ({
-  page, 
-  totalPages,
-  onNext,
-  onPrev
-}) => {
+const PaginationControls = ({ page, totalPages, onNext, onPrev }) => {
   // Reference: Pagination tutorial week 5
   const prevDisabled = page > 1 ? false : true;
   const nextDisabled = page < totalPages ? false : true;
 
-   
   return (
     <div className="container">
       <div className="controls">
         <div>
-          <button 
-            aria-label="Previous page" 
-            onClick={onPrev} 
-            disabled={prevDisabled}>
+          <button
+            aria-label="Previous page"
+            onClick={onPrev}
+            disabled={prevDisabled}
+          >
             <FontAwesomeIcon icon={faChevronLeft} size="2x" />
           </button>
         </div>
@@ -30,10 +25,11 @@ const PaginationControls = ({
           Page {page} of {totalPages}
         </span>
         <div>
-          <button 
-            aria-label="Next page" 
-            onClick={onNext} 
-            disabled={nextDisabled}>
+          <button
+            aria-label="Next page"
+            onClick={onNext}
+            disabled={nextDisabled}
+          >
             <FontAwesomeIcon icon={faChevronRight} size="2x" />
           </button>
         </div>
