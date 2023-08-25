@@ -14,7 +14,8 @@ router.get(
   queryParamValidationMiddleware(queryParamsSchema),
   async (req, res, next) => {
     try {
-      const products = await productRepository.getProducts();
+      const { limit, page } = req.query;
+      const products = await productRepository.getProducts(limit, page);
 
       const responseResults = {
         products,
