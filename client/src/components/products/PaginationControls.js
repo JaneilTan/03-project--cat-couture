@@ -5,25 +5,16 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const PaginationControls = ({
-  page,
-  setPage, 
-  totalPages
+  page, 
+  totalPages,
+  onNext,
+  onPrev
 }) => {
   // Reference: Pagination tutorial week 5
   const prevDisabled = page > 1 ? false : true;
   const nextDisabled = page < totalPages ? false : true;
 
-    const onPrev = () => {
-        if (!prevDisabled) {
-        setPage(page - 1);
-        }
-    };
-
-    const onNext = () => {
-        if (!nextDisabled) {
-        setPage(page + 1);
-        }
-    };
+   
   return (
     <div className="container">
       <div className="controls">

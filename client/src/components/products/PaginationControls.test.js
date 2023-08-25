@@ -26,7 +26,8 @@ describe("PaginationControls", () => {
     render(
       <PaginationControls
       setPage={() => {}} 
-      page={2} 
+      page={2}
+      onPrev={onPrev} 
       totalPages={2}
       />
     );

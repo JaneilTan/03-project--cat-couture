@@ -11,7 +11,20 @@ const ProductPage = () => {
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
+  const prevDisabled = page > 1 ? false : true;
+  const nextDisabled = page < totalPages ? false : true;
 
+    const onPrev = () => {
+        if (!prevDisabled) {
+        setPage(page - 1);
+        }
+    };
+
+    const onNext = () => {
+        if (!nextDisabled) {
+        setPage(page + 1);
+        }
+    };
   useEffect(() => {
     // We use AbortController (https://developer.mozilla.org/en-US/docs/Web/API/AbortController)
     // to clean up so that we don’t introduce a memory leak
@@ -53,9 +66,9 @@ const ProductPage = () => {
       {error && <ErrorMessage message="Error fetching products" />}
       <ProductList products={products} className="main-content" />
       <PaginationControls 
-        onNext
-        onPrev
         page={page}
+        onPrev={onPrev}
+        onNext={onNext}
         setPage={setPage}
         totalPages={totalPages}
       />
