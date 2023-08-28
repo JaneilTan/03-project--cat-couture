@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import ProtectedRoute from "./components/ProtectedRoute";
 import Header from "./components/Header";
 import DashboardPage from "./components/dashboard/DashboardPage";
 import ProductPage from "./components/products/ProductPage";
@@ -10,7 +11,9 @@ const App = () => {
     <div className="app">
       <Header />
       <Routes>
-        <Route exact path="/dashboard" element={<DashboardPage />} />
+        <Route exact path="/dashboard" element={<ProtectedRoute />}>
+          <Route exact path="/dashboard" element={<DashboardPage />} />
+        </Route>
         <Route exact path="/" element={<ProductPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

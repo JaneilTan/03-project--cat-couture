@@ -35,7 +35,7 @@ const ProductPage = () => {
       try {
         setLoading(true);
         setError(false);
-        const result = await api.getProducts();
+        const result = await api.getProducts(page);
         if (!result.ok) {
           throw new Error("API Error");
         }
@@ -56,9 +56,9 @@ const ProductPage = () => {
     };
 
     fetchData();
-
+    
     return () => abortController.abort();
-  }, []);
+  }, [page]);
 
   return (
     <main className="main-layout section-padding">

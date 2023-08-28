@@ -4,6 +4,7 @@ import Loader from "../Loader";
 import ErrorMessage from "../ErrorMessage";
 import CategoriesReport from "./CategoriesReport";
 import DiscountsReport from "./DiscountReport";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const DashboardPage = () => {
   const [loading, setLoading] = useState(false);
@@ -12,6 +13,8 @@ const DashboardPage = () => {
   const [categoryReports, setCategoryReport] = useState([]);
   const [discountReports, setDiscountReport] = useState([]);
 
+  const { getAccessTokenSilently } = useAuth0();
+
   useEffect(() => {
     // We use AbortController (https://developer.mozilla.org/en-US/docs/Web/API/AbortController)
     // to clean up so that we don’t introduce a memory leak
@@ -19,11 +22,14 @@ const DashboardPage = () => {
     const abortController = new AbortController();
 
     const fetchData = async () => {
+      const accessToken = await getAccessTokenSilently();
       try {
         setLoading(true);
         setError(false);
         setErrorMessage("");
-        const result = await api.getReports();
+
+        const result = await api.getReports(accessToken);
+
         if (!result.ok) {
           const error = await result.json();
           throw new Error(error.message || "Error fetching reports");
@@ -48,7 +54,7 @@ const DashboardPage = () => {
     fetchData();
 
     return () => abortController.abort();
-  }, []);
+  }, [getAccessTokenSilently]);
 
   return (
     <main className="narrow-layout main-content section-padding page-padding">

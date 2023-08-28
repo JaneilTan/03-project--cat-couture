@@ -1,8 +1,8 @@
 const { auth, requiredScopes } = require("express-oauth2-jwt-bearer");
 
 const checkJwt = auth({
-  audience: "https://catcouture.com",
-  issuerBaseURL: "https://dev-8r4cuew5h4u0t6ck.us.auth0.com/",
+  audience: `${process.env.AUTH0_AUDIENCE}`,
+  issuerBaseURL: `${process.env.AUTH0_ISSUER_BASE_URL}`,
 });
 
 const checkScopes = requiredScopes("read:reports");
