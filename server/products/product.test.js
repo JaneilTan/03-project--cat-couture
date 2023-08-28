@@ -19,9 +19,9 @@ describe("GIVEN that the GET /products route exist", () => {
     const expectedResponseData = {
       products: await productRepository.getProducts(defaultLimit, 1),
       currentPage: 1,
-      totalPages: Math.ceil(parseInt(totalProducts) / defaultLimit),
+      totalPages: Math.ceil(parseInt(totalProducts.length) / defaultLimit),
       itemsPerPage: defaultLimit,
-      totalItems: totalProducts,
+      totalItems: totalProducts.length,
     };
 
     const response = await request(app)
@@ -41,9 +41,9 @@ describe("GIVEN that the GET /products route exist", () => {
     const expectedResponseData = {
       products: [],
       currentPage: page,
-      totalPages: Math.ceil(parseInt(totalProducts) / defaultLimit),
+      totalPages: Math.ceil(parseInt(totalProducts.length) / defaultLimit),
       itemsPerPage: defaultLimit,
-      totalItems: totalProducts,
+      totalItems: totalProducts.length,
     };
 
     const response = await request(app)
@@ -61,11 +61,11 @@ describe("GIVEN that the GET /products route exist", () => {
       const limit = 10;
 
       const expectedResponseData = {
-        products: await productRepository.getTotalProducts(limit, 1),
+        products: await productRepository.getProducts(limit, 1),
         currentPage: 1,
-        totalPages: Math.ceil(parseInt(totalProducts) / limit),
+        totalPages: Math.ceil(parseInt(totalProducts.length) / limit),
         itemsPerPage: limit,
-        totalItems: totalProducts,
+        totalItems: totalProducts.length,
       };
 
       const response = await request(app)

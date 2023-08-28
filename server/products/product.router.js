@@ -26,7 +26,7 @@ router.get(
         itemsPerPage: limit,
         totalItems: allProducts.length, 
       };
-
+      
       return res.json(responseResults);
     } catch (err) {
       next(err);
