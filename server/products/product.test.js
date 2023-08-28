@@ -13,7 +13,7 @@ describe("GIVEN that the GET /products route exist", () => {
   });
 
   test("WHEN there are products THEN return status 200 and an array of products", async () => {
-    const totalProducts = await productRepository.getProducts();
+    const totalProducts = await productRepository.getTotalProducts();
     const defaultLimit = 10;
 
     const expectedResponseData = {
@@ -34,7 +34,7 @@ describe("GIVEN that the GET /products route exist", () => {
   });
 
   test("WHEN there are no products THEN return status 200 and an empty array", async () => {
-    const totalProducts = await productRepository.getProducts();
+    const totalProducts = await productRepository.getTotalProducts();
     const defaultLimit = 10;
     const page = 1000;
 
@@ -57,15 +57,15 @@ describe("GIVEN that the GET /products route exist", () => {
 
   describe("WHEN the client sends a request for a specific number of products", () => {
     test("WHEN the limit query parameter is valid as per the API spec THEN return status 200 and an array of products", async () => {
-      const totalProducts = await productRepository.getProducts();
+      const totalProducts = await productRepository.getTotalProducts();
       const limit = 10;
 
       const expectedResponseData = {
         products: await productRepository.getProducts(limit, 1),
         currentPage: 1,
-        totalPages: Math.ceil(parseInt(totalProducts.length) / limit),
+        totalPages: Math.ceil(parseInt(totalProducts) / limit),
         itemsPerPage: limit,
-        totalItems: totalProducts.length,
+        totalItems: totalProducts,
       };
 
       const response = await request(app)
