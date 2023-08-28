@@ -61,7 +61,7 @@ describe("GIVEN that the GET /products route exist", () => {
       const limit = 10;
 
       const expectedResponseData = {
-        products: await productRepository.getProducts(limit, 1),
+        products: await productRepository.getTotalProducts(limit, 1),
         currentPage: 1,
         totalPages: Math.ceil(parseInt(totalProducts) / limit),
         itemsPerPage: limit,
