@@ -89,9 +89,26 @@ describe("GIVEN that the GET /products route exist", () => {
   });
 
   describe("WHEN the client sends a request for a specific page of products", () => {
-    test.todo(
-      "WHEN the page query parameter is valid as per the API spec THEN return 200 status code and an array of products"
-    );
+    test("WHEN the page query parameter is valid as per the API spec THEN return 200 status code and an array of products", async () => {
+      const totalProducts = await productRepository.getTotalProducts();
+      const page = 1;
+      const limit = 8;
+
+    const expectedResponseData = {
+      products: await productRepository.getProducts(limit, page),
+      currentPage: 1,
+      totalPages: Math.ceil(parseInt(totalProducts.length) / limit),
+      itemsPerPage: limit,
+      totalItems: totalProducts.length,
+    };
+    const response = await request(app)
+    .get(`/api/products?limit=${limit}&page=${page}`)
+    .set("Accept", "application/json");
+
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual(expectedResponseData);
+    expect(response).toSatisfyApiSpec();
+    });
 
     test.todo(
       "WHEN the page query parameter is not valid as per the API spec THEN return status 400 and an appropriate error message"
