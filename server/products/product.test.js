@@ -110,8 +110,14 @@ describe("GIVEN that the GET /products route exist", () => {
     expect(response).toSatisfyApiSpec();
     });
 
-    test.todo(
-      "WHEN the page query parameter is not valid as per the API spec THEN return status 400 and an appropriate error message"
-    );
+    test("WHEN the page query parameter is not valid as per the API spec THEN return status 400 and an appropriate error message", async () => {
+      const response = await request(app)
+      .get("/api/products?page=a")
+      .set("Accept", "application/json");
+
+      expect(response.status).toBe(400);
+      expect(response.body.message).toBe('"page" must be a number');
+      expect(response).toSatisfyApiSpec();
+    });
   });
 });
