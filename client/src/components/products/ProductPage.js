@@ -35,7 +35,7 @@ const ProductPage = () => {
       try {
         setLoading(true);
         setError(false);
-        const result = await api.getProducts(page);
+        const result = await api.getProducts(page, 10);
         if (!result.ok) {
           throw new Error("API Error");
         }

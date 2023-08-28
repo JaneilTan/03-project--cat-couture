@@ -19,6 +19,10 @@ router.get(
 
       const responseResults = {
         products,
+        currentPage: page || 1,
+        totalPages: Math.ceil(products.length / limit),
+        itemsPerPage: limit,
+        totalItems: products.length, 
       };
 
       return res.json(responseResults);
