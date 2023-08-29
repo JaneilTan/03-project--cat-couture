@@ -24,9 +24,9 @@ router.get(
         currentPage: page,
         totalPages: Math.ceil(allProducts.length / limit),
         itemsPerPage: limit,
-        totalItems: allProducts.length, 
+        totalItems: allProducts.length,
       };
-      
+
       return res.json(responseResults);
     } catch (err) {
       next(err);

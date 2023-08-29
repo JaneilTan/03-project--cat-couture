@@ -3,7 +3,6 @@ const db = require("../db");
 module.exports = {
   getProducts: async (limit, page) => {
     try {
-
       const offset = limit * (page - 1);
       const result = await db.query(
         `SELECT
@@ -25,15 +24,15 @@ module.exports = {
               p.id
             LIMIT $1 OFFSET $2
             `,
-            [limit, offset]
-      ); 
+        [limit, offset]
+      );
       console.log(limit, page);
       return result.rows;
     } catch (error) {
       throw Error(error);
     }
   },
-  
+
   getTotalProducts: async () => {
     try {
       const result = await db.query(

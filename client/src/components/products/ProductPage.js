@@ -56,7 +56,7 @@ const ProductPage = () => {
     };
 
     fetchData();
-    
+
     return () => abortController.abort();
   }, [page]);
 
