@@ -2,4 +2,10 @@
 
 <!-- TODO: Add wireframe -->
 
-![img](./wireframe.jpg)
+## Mobile and Tablet Design
+
+![img](./cat-couture.png)
+
+## Desktop Design
+
+![img](./cat-couture1.png)
