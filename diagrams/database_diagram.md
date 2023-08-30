@@ -2,4 +2,4 @@
 
 <!-- TODO: Add database diagram -->
 
-![img](./dbdiagram.png)
+![img](./ERD.png)
