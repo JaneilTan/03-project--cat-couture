@@ -13,6 +13,8 @@ info:
 servers:
   - url: "http://localhost:5001/api"
     description: Development server
+  - url: "https://cat-couture-app-y9f4.onrender.com"
+    description: Production server
 paths:
   /products:
     get:
@@ -37,7 +39,7 @@ paths:
           name: page
           description: The page number for pagination
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -62,13 +64,13 @@ paths:
                   - totalPages
                   - itemsPerPage
                   - totalItems
-        '400':
+        "400":
           description: Bad Request
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-        '500':
+        "500":
           description: Internal Server Error
           content:
             application/json:
@@ -84,25 +86,25 @@ paths:
       tags:
         - reports
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 type: object
-        '401':
+        "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-        '403':
+        "403":
           description: Forbidden
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-        '500':
+        "500":
           description: Internal Server Error
           content:
             application/json:
