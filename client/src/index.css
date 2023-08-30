@@ -15,6 +15,7 @@ code {
 * {
   box-sizing: border-box;
 }
+
 .main-content {
   flex-grow: 2;
 }
