@@ -26,7 +26,6 @@ module.exports = {
             `,
         [limit, offset]
       );
-      console.log(limit, page);
       return result.rows;
     } catch (error) {
       throw Error(error);
