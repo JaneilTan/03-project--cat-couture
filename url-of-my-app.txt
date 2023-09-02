@@ -1,1 +1,2 @@
-URL:
+static site URL: https://cat-couture-site.onrender.com
+web service site URL: https://cat-couture-app-y9f4.onrender.com
