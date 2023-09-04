@@ -69,7 +69,7 @@ code {
 }
 .nav {
   width: 100%;
-  background-color: #88e3e6;
+  background-color: #09c8cf;
   display: flex;
   justify-content: space-between;
 }
@@ -93,9 +93,10 @@ code {
   padding-bottom: 1rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+  font-weight: bold;
 }
 .activeLink {
-  color: #0ea68c;
+  color: #4d5b5b;
 }
 
 .header {
@@ -117,12 +118,13 @@ code {
   left: 0;
 }
 .button {
-  background-color: #88e3e6;
+  background-color: #09c8cf;
   border: 1px solid #344b4c;
   border-radius: 0.5rem;
-  color: white;
+  color: rgb(255, 255, 254);
   cursor: pointer;
   display: flex;
+  font-weight: bold;
   padding: 0.75rem 1.2rem;
   width: max-content;
 }

@@ -6,9 +6,6 @@ const Header = () => {
     <>
       <header>
         <nav className={`nav page-padding`}>
-          <div className="menu">
-            <img src="./img/menu_black_24dp.svg" alt="menu" />
-          </div>
           <ul className="rightLinks">
             <li className="rightLinkItems">
               <NavLink

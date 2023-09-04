@@ -32,9 +32,10 @@ const Product = ({
               discountValue={discountValue}
               discountType={discountType}
             />
+            
           )}
         </div>
-        <h3>{name}</h3>
+        <h2>{name}</h2>
         <p>Price {price}</p>
         <p data-testid="product-description">{description}</p>
         <button className="button">Add to Cart</button>

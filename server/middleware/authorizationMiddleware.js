@@ -5,7 +5,7 @@ const checkJwt = auth({
   issuerBaseURL: `${process.env.AUTH0_ISSUER_BASE_URL}`,
 });
 
-const checkScopes = requiredScopes("read:reports");
+const checkScopes = requiredScopes(`${process.env.AUTH0_SCOPE}`);
 
 module.exports = {
   checkJwt,
