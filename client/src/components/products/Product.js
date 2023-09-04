@@ -32,7 +32,6 @@ const Product = ({
               discountValue={discountValue}
               discountType={discountType}
             />
-            
           )}
         </div>
         <h2>{name}</h2>
